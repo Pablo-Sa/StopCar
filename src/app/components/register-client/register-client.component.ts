@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/shared/client-service';
 
 @Component({
-  selector: 'register-client',
+  selector: 'app-register-client',
   templateUrl: './register-client.component.html',
   styleUrls: ['./register-client.component.css']
 })

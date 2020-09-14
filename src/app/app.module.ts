@@ -11,15 +11,19 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { HeaderComponent } from './components/header/header.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterClientComponent
+    RegisterClientComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
+    FlexLayoutModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
