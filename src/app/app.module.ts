@@ -13,12 +13,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisterCarsComponent } from './components/register-cars/register-cars.component';
+import { OrderServiceComponent } from './components/order-service/order-service.component';
+import { EstimateComponent } from './components/estimate/estimate.component';
+import { LogCarsComponent } from './components/log-cars/log-cars.component';
+import { LogOrderComponent } from './components/log-order/log-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterClientComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterCarsComponent,
+    OrderServiceComponent,
+    EstimateComponent,
+    LogCarsComponent,
+    LogOrderComponent
   ],
   imports: [
     BrowserModule,

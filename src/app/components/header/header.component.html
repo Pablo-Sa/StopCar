@@ -9,14 +9,20 @@
       
       <button mat-button [matMenuTriggerFor]="ordemDeServico">Ordem de Serviço</button>
       <mat-menu #ordemDeServico="matMenu" yPosition="below">
-        <button mat-menu-item><mat-icon>add_circle_outline</mat-icon>Criar</button>
-        <button mat-menu-item><mat-icon>delete_sweep</mat-icon>Excluir</button>
+        <button mat-menu-item routerLink="ordem"><mat-icon>add_circle_outline</mat-icon>Criar</button>
+        <button mat-menu-item routerLink="ordem"><mat-icon>delete_sweep</mat-icon>Excluir</button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="orcamento">Orçamento</button>
+      <mat-menu #orcamento="matMenu" yPosition="below">
+        <button routerLink="orcamento" mat-menu-item><mat-icon>add_circle_outline</mat-icon>Criar</button>
+        <button routerLink="orcamento" mat-menu-item><mat-icon>touch_app</mat-icon>Consultar</button>
       </mat-menu>
       
       <button mat-button [matMenuTriggerFor]="logs">Logs</button>
       <mat-menu #logs="matMenu" xPosition="before">
-        <button mat-menu-item><mat-icon>no_transfer</mat-icon>Histórico do Veículo</button>
-        <button mat-menu-item><mat-icon>policy</mat-icon>Exclusão de OS</button>
+        <button routerLink="historicoveiculo" mat-menu-item><mat-icon>no_transfer</mat-icon>Histórico do Veículo</button>
+        <button routerLink="exclusaoorcamento" mat-menu-item><mat-icon>policy</mat-icon>Exclusão de OS</button>
       </mat-menu>
   </mat-toolbar>
   
