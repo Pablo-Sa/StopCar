@@ -1,2 +1,2 @@
 # StopCar
-Sistema de Gerenciamento de Mecânica de Oficina (Em Desenvolvimento) 
+Sistema de Gerenciamento de Oficina de Mecânica de Carros (Em Desenvolvimento) 
