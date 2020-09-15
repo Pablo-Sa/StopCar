@@ -14,6 +14,16 @@
       </button>
     </mat-menu>
 
+    <button mat-button [matMenuTriggerFor]="consulta">Consultas</button>
+    <mat-menu #consulta="matMenu" yPosition="above">
+      <button mat-menu-item routerLink="consultaclientes">
+        <mat-icon>supervisor_account</mat-icon>Clientes
+      </button>
+      <button mat-menu-item routerLink="veiculos">
+        <mat-icon>directions_car</mat-icon>Veículos
+      </button>
+    </mat-menu>
+
     <button mat-button [matMenuTriggerFor]="ordemDeServico">
       Ordem de Serviço
     </button>

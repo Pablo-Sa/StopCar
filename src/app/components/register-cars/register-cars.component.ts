@@ -1,3 +1,4 @@
+import { CarsService } from './../../shared/cars.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {  Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,7 +17,8 @@ export class RegisterCarsComponent implements OnInit{
   vehicleForm: FormGroup;
 
   constructor(private _formBuilder: FormBuilder,
-              private _snackBar: MatSnackBar
+              private _snackBar: MatSnackBar,
+              private carsService: CarsService
               ) { }
 
   openSnackBar(message: string,) {
@@ -36,8 +38,13 @@ export class RegisterCarsComponent implements OnInit{
   }
 
   saveVehicle(){
+    console.log(this.vehicleForm.value);
+    this.carsService.insert(this.vehicleForm.value)
+    .then(sucess => this.openSnackBar('Veículo Cadastrado Com Sucesso.'),
+          error => this.openSnackBar(`Ocorreu um Erro ao tentar Salvar: ${error}`));
 
-
+    this.vehicleForm.reset();
+    console.log('Inclusão Concluída com Sucesso.');
   }
 
 }

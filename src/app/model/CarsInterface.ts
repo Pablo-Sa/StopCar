@@ -1,4 +1,4 @@
-export class CarsModel{
+export interface CarsInterface{
     id:string;
     modelo:string;
     ano:string;

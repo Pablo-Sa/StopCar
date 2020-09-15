@@ -1,4 +1,4 @@
-import { CarsModel } from './../model/CarsModel';
+import { CarsInterface } from './../model/CarsInterface';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class CarsService {
 
-  private clienteCollection: AngularFirestoreCollection<CarsModel> = this.db.collection("veiculos");
+  private clienteCollection: AngularFirestoreCollection<CarsInterface> = this.db.collection("veiculos");
 
   constructor(private db: AngularFirestore) {}
 
-  insert(cars: CarsModel) {
+  insert(cars: CarsInterface) {
     return this.clienteCollection.add({...cars});
   }
 
-  getAll():Observable<CarsModel[]>{
+  getAll():Observable<CarsInterface[]>{
     return this.clienteCollection.valueChanges();
   }
 

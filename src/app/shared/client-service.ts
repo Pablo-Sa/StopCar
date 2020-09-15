@@ -1,6 +1,5 @@
-import { ClientModel } from "./../model/ClientModel";
+import { ClientInterface } from './../model/ClientInterface';
 import { Injectable } from "@angular/core";
-import { map } from "rxjs/operators";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -11,15 +10,15 @@ import { Observable } from 'rxjs';
   providedIn: "root",
 })
 export class ClientService {
-  private clienteCollection: AngularFirestoreCollection<ClientModel> = this.db.collection("cliente");
+  private clienteCollection: AngularFirestoreCollection<ClientInterface> = this.db.collection("cliente");
 
   constructor(private db: AngularFirestore) {}
 
-  insert(client: ClientModel) {
+  insert(client: ClientInterface) {
     return this.clienteCollection.add({...client});
   }
 
-  getAll():Observable<ClientModel[]>{
+  getAll():Observable<ClientInterface[]>{
     return this.clienteCollection.valueChanges();
   }
 

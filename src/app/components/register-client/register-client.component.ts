@@ -62,6 +62,7 @@ export class RegisterClientComponent implements OnInit, DoCheck {
   }
 
   saveClient(){
+    console.log(this.completeFormGroup.value);
     this.clientService.insert(this.completeFormGroup.value)
     .then(
       sucess => this.openSnackBar(`Cliente Salvo Com Sucesso`),
@@ -70,6 +71,5 @@ export class RegisterClientComponent implements OnInit, DoCheck {
     this.firstFormGroup.reset();
     this.secondFormGroup.reset();
     this.completeFormGroup.reset();
-    console.log(this.completeFormGroup.value)
   }
 }

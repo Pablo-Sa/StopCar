@@ -35,6 +35,7 @@ import { HeaderDialogComponent } from './components/header-dialog/header-dialog.
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ListClientsComponent } from './components/list-clients/list-clients.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     LogOrderComponent,
     HeaderDialogComponent,
     FooterComponent,
+    ListClientsComponent,
   ],
   imports: [
     BrowserModule,

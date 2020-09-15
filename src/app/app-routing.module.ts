@@ -6,6 +6,7 @@ import { OrderServiceComponent } from './components/order-service/order-service.
 import { EstimateComponent } from './components/estimate/estimate.component';
 import { LogCarsComponent } from './components/log-cars/log-cars.component';
 import { LogOrderComponent } from './components/log-order/log-order.component';
+import { ListClientsComponent } from './components/list-clients/list-clients.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'orcamento', component: EstimateComponent },
   { path: 'historicoveiculo', component: LogCarsComponent },
   { path: 'exclusaoorcamento', component: LogOrderComponent },
+  { path: 'consultaclientes', component: ListClientsComponent },
   { path: '', pathMatch: 'full', redirectTo: '' }
 ];
 
