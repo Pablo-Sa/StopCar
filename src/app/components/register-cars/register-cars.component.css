@@ -26,6 +26,8 @@
   max-height: auto;
   border-style: solid;
   border-color: brown;
+  padding-bottom: 25px;
+  padding-left: 40px;
 }
 
 .example-header-image {
