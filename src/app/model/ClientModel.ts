@@ -1,10 +1,13 @@
 export class ClientModel{
-     id?: string;
+     id: string;
      nome: string;
-     sobrenome?:string;
-     endereco?: string;
-     celular?: string;
-     fixo?: string;
-     CNPJCPF?: string;
-
+     sobrenome:string;
+     celular: string;
+     fixo: string;
+     cnpjcpf: string;
+     endereco:{
+          rua:string;
+          numero:string;
+          bairro:string;
+     };
 }

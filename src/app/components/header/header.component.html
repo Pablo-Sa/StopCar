@@ -1,28 +1,50 @@
-<mat-toolbar color="warn" class="mat-elevation-z9">
-    <h1><strong>STOPCAR</strong></h1>   
-    
-      <button mat-button [matMenuTriggerFor]="cadastro">Cadastro</button>
-      <mat-menu #cadastro="matMenu" yPosition="above">
-        <button mat-menu-item routerLink="clientes"><mat-icon>supervisor_account</mat-icon>Clientes</button>
-        <button mat-menu-item routerLink="veiculos"><mat-icon>directions_car</mat-icon>Veículos</button>
-      </mat-menu>
-      
-      <button mat-button [matMenuTriggerFor]="ordemDeServico">Ordem de Serviço</button>
-      <mat-menu #ordemDeServico="matMenu" yPosition="below">
-        <button mat-menu-item routerLink="ordem"><mat-icon>add_circle_outline</mat-icon>Criar</button>
-        <button mat-menu-item routerLink="ordem"><mat-icon>delete_sweep</mat-icon>Excluir</button>
-      </mat-menu>
+<mat-toolbar color="warn" class="mat-elevation-z15">
+  <h1>
+    <strong>STOPCAR</strong>
+  </h1>
 
-      <button mat-button [matMenuTriggerFor]="orcamento">Orçamento</button>
-      <mat-menu #orcamento="matMenu" yPosition="below">
-        <button routerLink="orcamento" mat-menu-item><mat-icon>add_circle_outline</mat-icon>Criar</button>
-        <button routerLink="orcamento" mat-menu-item><mat-icon>touch_app</mat-icon>Consultar</button>
-      </mat-menu>
-      
-      <button mat-button [matMenuTriggerFor]="logs">Logs</button>
-      <mat-menu #logs="matMenu" xPosition="before">
-        <button routerLink="historicoveiculo" mat-menu-item><mat-icon>no_transfer</mat-icon>Histórico do Veículo</button>
-        <button routerLink="exclusaoorcamento" mat-menu-item><mat-icon>policy</mat-icon>Exclusão de OS</button>
-      </mat-menu>
-  </mat-toolbar>
-  
+  <div style="margin-left: 90px">
+    <button mat-button [matMenuTriggerFor]="cadastro">Cadastro</button>
+    <mat-menu #cadastro="matMenu" yPosition="above">
+      <button mat-menu-item routerLink="clientes">
+        <mat-icon>supervisor_account</mat-icon>Clientes
+      </button>
+      <button mat-menu-item routerLink="veiculos">
+        <mat-icon>directions_car</mat-icon>Veículos
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="ordemDeServico">
+      Ordem de Serviço
+    </button>
+    <mat-menu #ordemDeServico="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="ordem">
+        <mat-icon>add_circle_outline</mat-icon>Criar
+      </button>
+      <button mat-menu-item routerLink="ordem">
+        <mat-icon>delete_sweep</mat-icon>Excluir
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="orcamento">Orçamento</button>
+    <mat-menu #orcamento="matMenu" yPosition="below">
+      <button routerLink="orcamento" mat-menu-item>
+        <mat-icon>add_circle_outline</mat-icon>Criar
+      </button>
+      <button routerLink="orcamento" mat-menu-item>
+        <mat-icon>touch_app</mat-icon>Consultar
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="logs">Logs</button>
+    <mat-menu #logs="matMenu" xPosition="before">
+      <button routerLink="historicoveiculo" mat-menu-item>
+        <mat-icon>no_transfer</mat-icon>Histórico do Veículo
+      </button>
+      <button routerLink="exclusaoorcamento" mat-menu-item>
+        <mat-icon>policy</mat-icon>Exclusão de OS
+      </button>
+    </mat-menu>
+    <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+  </div>
+</mat-toolbar>

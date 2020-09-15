@@ -16,7 +16,7 @@ export class ClientService {
   constructor(private db: AngularFirestore) {}
 
   insert(client: ClientModel) {
-    this.clienteCollection.add({...client});
+    return this.clienteCollection.add({...client});
   }
 
   getAll():Observable<ClientModel[]>{

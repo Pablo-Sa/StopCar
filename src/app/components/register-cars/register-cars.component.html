@@ -1,1 +1,26 @@
-<p>register-cars works!</p>
+<mat-card class="example-card mat-elevation-z15">
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>directions_car</mat-icon></div>
+    <mat-card-title>Cadastro de Veículos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="vehicleForm">
+      <ng-template matStepLabel>Nome Completo</ng-template>
+
+      <mat-form-field appearance="outline" class="input">
+        <mat-label>Nome</mat-label>
+        <input
+          matInput
+          placeholder="Informe o Nome"
+          formControlName="nome"
+          required
+        />
+        <mat-hint>* Obrigatório</mat-hint>
+      </mat-form-field>
+    </form>  
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button color="warn">Cancelar</button>
+    <button mat-raised-button color="warn">Cadastrar</button>
+  </mat-card-actions>
+</mat-card>
