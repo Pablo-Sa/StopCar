@@ -36,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
+import { ListCarsComponent } from './components/list-cars/list-cars.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ListClientsComponent } from './components/list-clients/list-clients.com
     HeaderDialogComponent,
     FooterComponent,
     ListClientsComponent,
+    ListCarsComponent,
   ],
   imports: [
     BrowserModule,

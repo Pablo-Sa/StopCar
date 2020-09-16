@@ -1,43 +1,42 @@
-import { ClientInterface } from "./../../model/ClientInterface";
-import { ClientService } from "./../../shared/client-service";
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
+import { CarsInterface } from './../../model/CarsInterface';
+import { CarsService } from './../../shared/cars.service';
 import { MatSort } from '@angular/material/sort';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: "app-list-clients",
-  templateUrl: "./list-clients.component.html",
-  styleUrls: ["./list-clients.component.css"],
+  selector: 'app-list-cars',
+  templateUrl: './list-cars.component.html',
+  styleUrls: ['./list-cars.component.css'],
+  preserveWhitespaces: true
 })
-export class ListClientsComponent implements OnInit{
-  
+export class ListCarsComponent implements OnInit {
+
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   
-  ELEMENT_DATA: ClientInterface[] = [];
+  ELEMENT_DATA: CarsInterface[] = [];
   displayedColumns: string[] = [
-    "nome",
-    "sobrenome",
-    "cnpjcpf",
-    "celular",
-    "fixo",
-    "editar",
-    "excluir",
+    "modelo",
+    "ano",
+    "cor",
+    "placa",
+    "acao"
   ];
 
   dataSource = new MatTableDataSource();
   completeLoading: boolean;
   errorLoading: boolean;
 
-  constructor(private clientService: ClientService) {
+  constructor(private carsService: CarsService) {
     this.loadClients();
   }
 
   ngOnInit() {}
 
   loadClients() {
-    this.clientService.getAll().subscribe(
+    this.carsService.getAll().subscribe(
       (data) => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
@@ -58,4 +57,5 @@ export class ListClientsComponent implements OnInit{
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 }

@@ -1,3 +1,4 @@
+import { ListCarsComponent } from './components/list-cars/list-cars.component';
 import { RegisterClientComponent } from './components/register-client/register-client.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'historicoveiculo', component: LogCarsComponent },
   { path: 'exclusaoorcamento', component: LogOrderComponent },
   { path: 'consultaclientes', component: ListClientsComponent },
+  { path: 'consultaveiculos', component: ListCarsComponent },
   { path: '', pathMatch: 'full', redirectTo: '' }
 ];
 
