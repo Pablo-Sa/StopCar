@@ -31,13 +31,14 @@ import { OrderServiceComponent } from "./components/order-service/order-service.
 import { EstimateComponent } from "./components/estimate/estimate.component";
 import { LogCarsComponent } from "./components/log-cars/log-cars.component";
 import { LogOrderComponent } from "./components/log-order/log-order.component";
-import { HeaderDialogComponent } from './components/header-dialog/header-dialog.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ListClientsComponent } from './components/list-clients/list-clients.component';
-import { ListCarsComponent } from './components/list-cars/list-cars.component';
-import { EditOrExclusionComponent } from './components/modals/edit-or-exclusion/edit-or-exclusion.component';
+import { HeaderDialogComponent } from "./components/header-dialog/header-dialog.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { ListClientsComponent } from "./components/list-clients/list-clients.component";
+import { ListCarsComponent } from "./components/list-cars/list-cars.component";
+import { ExclusionModalComponent } from "./components/modals/exclusion-modal/exclusion-modal.component";
+import { EditModalCarsComponent } from './components/modals/edit-modal-cars/edit-modal-cars.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditOrExclusionComponent } from './components/modals/edit-or-exclusion/
     FooterComponent,
     ListClientsComponent,
     ListCarsComponent,
-    EditOrExclusionComponent,
+    ExclusionModalComponent,
+    EditModalCarsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,7 @@ import { EditOrExclusionComponent } from './components/modals/edit-or-exclusion/
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     StyleUtils,
@@ -83,6 +85,6 @@ import { EditOrExclusionComponent } from './components/modals/edit-or-exclusion/
     FlexOrderStyleBuilder,
   ],
   bootstrap: [AppComponent],
-  entryComponents:[HeaderDialogComponent,EditOrExclusionComponent]
+  entryComponents: [HeaderDialogComponent, ExclusionModalComponent,EditModalCarsComponent],
 })
 export class AppModule {}

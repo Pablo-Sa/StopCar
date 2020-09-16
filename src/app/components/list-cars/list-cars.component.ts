@@ -6,7 +6,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
-import { EditOrExclusionComponent } from "../modals/edit-or-exclusion/edit-or-exclusion.component";
+import { ExclusionModalComponent } from '../modals/exclusion-modal/exclusion-modal.component';
+import { EditModalCarsComponent } from '../modals/edit-modal-cars/edit-modal-cars.component';
 
 @Component({
   selector: "app-list-cars",
@@ -15,7 +16,6 @@ import { EditOrExclusionComponent } from "../modals/edit-or-exclusion/edit-or-ex
   preserveWhitespaces: true,
 })
 export class ListCarsComponent implements OnInit {
-
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -35,24 +35,32 @@ export class ListCarsComponent implements OnInit {
 
   ngOnInit() {}
 
-  openSnackBar(message: string,) {
-    this._snackBar.open(message, 'Ok',{
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Ok", {
       duration: 2000,
-      verticalPosition:'top'
+      verticalPosition: "top",
     });
-  }              
+  }
 
   deleteRow(id: string) {
-    const dialogRef = this.dialog.open(EditOrExclusionComponent);
+    const dialogRef = this.dialog.open(ExclusionModalComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       if (result) {
-        this.carsService.delete(id)
-        .then(sucess => this.openSnackBar('Registro Excluído com Sucesso.'),
-              error  => this.openSnackBar(`Erro ao Excluír o Registro: ${error}`));
+        this.carsService.delete(id).then(
+          (sucess) => this.openSnackBar("Registro Excluído com Sucesso."),
+          (error) => this.openSnackBar(`Erro ao Excluír o Registro: ${error}`)
+        );
       }
     });
+  }
+
+  updateRow(object: CarsInterface){
+    this.dialog.open(EditModalCarsComponent,{
+      data:object
+    });
+
   }
 
   loadClients() {
@@ -64,7 +72,7 @@ export class ListCarsComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.completeLoading = true;
         this.ELEMENT_DATA = data;
-        this.paginator._intl.itemsPerPageLabel = "Items por Página";
+        this.paginator._intl.itemsPerPageLabel = "Itens por Página";
         console.log(this.ELEMENT_DATA);
       },
       (error) => {

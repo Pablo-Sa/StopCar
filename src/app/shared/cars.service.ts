@@ -39,4 +39,8 @@ export class CarsService {
   delete(key: string) {
     return this.carsCollection.doc(key).delete();
   }
+
+  update(object: CarsInterface) {
+    return this.carsCollection.doc(object.id).update(object);
+  }
 }

@@ -61,7 +61,12 @@
         <ng-container matColumnDef="acao">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element" style="padding-left: 30%">
-            <button mat-raised-button color="warn" style="width: min-content">
+            <button
+              (click)="updateRow(element)"
+              mat-raised-button
+              color="warn"
+              style="width: min-content"
+            >
               <mat-icon>edit</mat-icon>
             </button>
             <button

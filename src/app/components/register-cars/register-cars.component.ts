@@ -1,8 +1,10 @@
+import { CarsInterface } from './../../model/CarsInterface';
 import { CarsService } from './../../shared/cars.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import {  Component, OnInit } from '@angular/core';
+import {  Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register-cars',
@@ -19,7 +21,7 @@ export class RegisterCarsComponent implements OnInit{
   constructor(private _formBuilder: FormBuilder,
               private _snackBar: MatSnackBar,
               private carsService: CarsService
-              ) { }
+              ) {}
 
   openSnackBar(message: string,) {
     this._snackBar.open(message, 'Ok',{
