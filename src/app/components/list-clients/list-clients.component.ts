@@ -39,13 +39,14 @@ export class ListClientsComponent implements OnInit{
   loadClients() {
     this.clientService.getAll().subscribe(
       (data) => {
+        console.log('Dentro do Load')
+        console.log(data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.completeLoading = true;
         this.ELEMENT_DATA = data;
         this.paginator._intl.itemsPerPageLabel = "Items por Página";
-        console.log(this.ELEMENT_DATA)
       },
       (error) => {
         this.errorLoading = true;

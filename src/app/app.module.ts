@@ -37,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ListClientsComponent } from './components/list-clients/list-clients.component';
 import { ListCarsComponent } from './components/list-cars/list-cars.component';
+import { EditOrExclusionComponent } from './components/modals/edit-or-exclusion/edit-or-exclusion.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ListCarsComponent } from './components/list-cars/list-cars.component';
     FooterComponent,
     ListClientsComponent,
     ListCarsComponent,
+    EditOrExclusionComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,6 @@ import { ListCarsComponent } from './components/list-cars/list-cars.component';
     FlexOrderStyleBuilder,
   ],
   bootstrap: [AppComponent],
-  entryComponents:[HeaderDialogComponent]
+  entryComponents:[HeaderDialogComponent,EditOrExclusionComponent]
 })
 export class AppModule {}

@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
+  CollectionReference,
 } from "@angular/fire/firestore";
 import { Observable } from 'rxjs';
 
@@ -11,18 +12,31 @@ import { Observable } from 'rxjs';
   providedIn: "root",
 })
 export class ClientService {
-  private clienteCollection: AngularFirestoreCollection<ClientInterface> = this.db.collection("cliente");
+  private clienteCollection: AngularFirestoreCollection<any> = this.db.collection("cliente");
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore) {
+    
+  }
 
   insert(client: ClientInterface) {
-    return this.clienteCollection.add({...client});
+    return this.clienteCollection.add({...client})
+    .then(sucess=> console.log('Usuário Salvo Com Sucesso.'));
   }
 
   getAll():Observable<ClientInterface[]>{
     return this.db.collection<ClientInterface>("cliente", 
     ref => ref.orderBy('nome', 'asc'))
-    .valueChanges();
+    .snapshotChanges()
+    .pipe(
+      map(actions =>{ 
+        return actions.map(
+          item=>{
+            const data = item.payload.doc.data() as ClientInterface;
+            const id = item.payload.doc.id;
+            return {id, ...data};
+            })
+      })
+    );
   }
 
 }
