@@ -134,7 +134,7 @@
               <mat-icon>navigate_before</mat-icon>Voltar
             </button>
             <button
-              [disabled]="completeFormGroup.invalid"
+              [disabled]="firstFormGroup.invalid || secondFormGroup.invalid"
               mat-raised-button
               color="warn"
               (click)="

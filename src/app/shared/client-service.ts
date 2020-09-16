@@ -1,5 +1,6 @@
 import { ClientInterface } from './../model/ClientInterface';
 import { Injectable } from "@angular/core";
+import { map } from 'rxjs/operators';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -19,7 +20,9 @@ export class ClientService {
   }
 
   getAll():Observable<ClientInterface[]>{
-    return this.clienteCollection.valueChanges();
+    return this.db.collection<ClientInterface>("cliente", 
+    ref => ref.orderBy('nome', 'asc'))
+    .valueChanges();
   }
 
 }

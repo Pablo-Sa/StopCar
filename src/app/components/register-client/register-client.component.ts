@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { ClientInterface } from './../../model/ClientInterface';
+import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/shared/client-service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,11 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   }],
   preserveWhitespaces: true
 })
-export class RegisterClientComponent implements OnInit, DoCheck {
+export class RegisterClientComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  completeFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder,
               private _snackBar: MatSnackBar,
@@ -29,21 +29,6 @@ export class RegisterClientComponent implements OnInit, DoCheck {
       verticalPosition:'top'
     });
   }              
-
-  ngDoCheck() {
-    this.completeFormGroup = this._formBuilder.group({
-      nome: [this.firstFormGroup.controls['nome'].value, Validators.required],     
-      sobrenome: [this.firstFormGroup.controls['sobrenome'].value, Validators.required],  
-      celular: [this.secondFormGroup.controls['celular'].value, Validators.required],
-      fixo: [this.secondFormGroup.controls['fixo'].value, Validators.required],
-      cnpjcpf: [this.secondFormGroup.controls['cnpjcpf'].value, Validators.required],
-      endereco: this._formBuilder.group({
-        rua: [this.secondFormGroup.controls['rua'].value, Validators.required],
-        numero: [this.secondFormGroup.controls['numero'].value, Validators.required],
-        bairro: [this.secondFormGroup.controls['bairro'].value, Validators.required]
-      })    
-  })
- }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -62,14 +47,27 @@ export class RegisterClientComponent implements OnInit, DoCheck {
   }
 
   saveClient(){
-    console.log(this.completeFormGroup.value);
-    this.clientService.insert(this.completeFormGroup.value)
+    const client:ClientInterface =  {
+          ...this.firstFormGroup.value,
+          "celular":this.secondFormGroup.controls['celular'].value,
+          "fixo":this.secondFormGroup.controls['fixo'].value,
+          "cnpjcpf":this.secondFormGroup.controls['cnpjcpf'].value,
+          endereco: {
+            "rua": this.secondFormGroup.controls['rua'].value,
+            "numero": this.secondFormGroup.controls['numero'].value,
+            "bairro": this.secondFormGroup.controls['bairro'].value,
+          }
+        };
+
+    console.log(client);
+
+    this.clientService.insert(client)
     .then(
       sucess => this.openSnackBar(`Cliente Salvo Com Sucesso`),
       error => this.openSnackBar(`Ocorreu um Erro ao Salvar: ${error}`)
       );
+      
     this.firstFormGroup.reset();
     this.secondFormGroup.reset();
-    this.completeFormGroup.reset();
   }
 }

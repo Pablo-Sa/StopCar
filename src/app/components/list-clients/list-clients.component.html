@@ -1,8 +1,8 @@
-<div style="padding-left: 20px; padding-right: 20px">
+<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px;">
   <mat-card class="example-card mat-elevation-z15">
     <mat-card-header>
-      <div mat-card-avatar><mat-icon>directions_car</mat-icon></div>
-      <mat-card-title>Consulta de Veículos</mat-card-title>
+      <div mat-card-avatar><mat-icon>supervisor_account</mat-icon></div>
+      <mat-card-title>Consulta de Clientes</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
@@ -31,6 +31,8 @@
         mat-table
         [dataSource]="dataSource"
         class="mat-elevation-z8"
+        style="border: solid; border-color: brown;"
+        matSort
         *ngIf="completeLoading; else loading"
       >
         <!-- Nome Column -->
@@ -93,6 +95,14 @@
           </td>
         </tr>
       </table>
+
+       <mat-paginator [length]="ELEMENT_DATA.length" 
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          showFirstLastButtons
+          >
+        </mat-paginator>
+
     </mat-card-content>
   </mat-card>
 </div>
