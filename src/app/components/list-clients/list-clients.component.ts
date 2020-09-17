@@ -1,20 +1,22 @@
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { ClientInterface } from "./../../model/ClientInterface";
 import { ClientService } from "./../../shared/client-service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from '@angular/material/sort';
+import { MatSort } from "@angular/material/sort";
+import { ExclusionModalComponent } from '../modals/exclusion-modal/exclusion-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: "app-list-clients",
   templateUrl: "./list-clients.component.html",
   styleUrls: ["./list-clients.component.css"],
 })
-export class ListClientsComponent implements OnInit{
-  
+export class ListClientsComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  
+
   ELEMENT_DATA: ClientInterface[] = [];
   displayedColumns: string[] = [
     "nome",
@@ -30,16 +32,40 @@ export class ListClientsComponent implements OnInit{
   completeLoading: boolean;
   errorLoading: boolean;
 
-  constructor(private clientService: ClientService) {
+  constructor(
+    private clientService: ClientService,
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog
+  ) {
     this.loadClients();
   }
 
   ngOnInit() {}
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Ok", {
+      duration: 2000,
+      verticalPosition: "top",
+    });
+  }
+
+  deleteRow(id: string) {
+    const dialogRef = this.dialog.open(ExclusionModalComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.clientService.delete(id).then(
+          (sucess) => this.openSnackBar("Registro Excluído com Sucesso."),
+          (error) => this.openSnackBar(`Erro ao Excluír o Registro: ${error}`)
+        );
+      }
+    });
+  }
+
   loadClients() {
     this.clientService.getAll().subscribe(
       (data) => {
-        console.log('Dentro do Load')
         console.log(data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;

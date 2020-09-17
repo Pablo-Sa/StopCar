@@ -39,4 +39,8 @@ export class ClientService {
     );
   }
 
+  delete(key: string) {
+    return this.clienteCollection.doc(key).delete();
+  }
+
 }

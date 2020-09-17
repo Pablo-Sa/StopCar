@@ -79,7 +79,7 @@
         <ng-container matColumnDef="excluir">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="warn" style="width: min-content;">
+                <button (click)="deleteRow(element.id)"  mat-raised-button color="warn" style="width: min-content;">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
