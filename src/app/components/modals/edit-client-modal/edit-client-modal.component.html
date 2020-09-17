@@ -1,16 +1,26 @@
-<div style="padding-left: 20px; padding-right: 20px;">
+<div style="padding-left: 20px; padding-right: 20px">
   <mat-card class="example-card mat-elevation-z20">
     <mat-card-header>
       <div mat-card-avatar><mat-icon>supervisor_account</mat-icon></div>
       <mat-card-title>Cadastro de Clientes</mat-card-title>
-      <button mat-raised-button mat-dialog-close color="warn" style="left:55%; margin-bottom: 18px;"><mat-icon>close</mat-icon></button>
+      <button
+        mat-raised-button
+        mat-dialog-close
+        color="warn"
+        style="left: 55%; margin-bottom: 18px"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-card-header>
     <mat-card-content>
       <mat-horizontal-stepper #stepper>
-        <mat-step [stepControl]="firstFormGroup" errorMessage="Dados Incompletos.">
+        <mat-step
+          [stepControl]="firstFormGroup"
+          errorMessage="Dados Incompletos."
+        >
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Nome Completo</ng-template>
-      
+
             <mat-form-field appearance="outline" class="input">
               <mat-label>Nome</mat-label>
               <input
@@ -21,9 +31,9 @@
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
-      
+
             <br />
-      
+
             <mat-form-field appearance="outline" class="input">
               <mat-label>Sobrenome</mat-label>
               <input
@@ -34,7 +44,7 @@
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
-      
+
             <div>
               <p>Informe os dados e clique em próximo</p>
               <button mat-raised-button matStepperNext color="warn">
@@ -43,10 +53,13 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Endereço Obrigatório">
+        <mat-step
+          [stepControl]="secondFormGroup"
+          errorMessage="Endereço Obrigatório"
+        >
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Dados Pessoais</ng-template>
-      
+
             <mat-form-field appearance="outline" class="input">
               <mat-label>Rua</mat-label>
               <input
@@ -57,7 +70,7 @@
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
-      
+
             <mat-form-field appearance="outline">
               <mat-label>Número</mat-label>
               <input
@@ -68,7 +81,7 @@
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
-      
+
             <mat-form-field appearance="outline" class="inputBairro">
               <mat-label>Bairro</mat-label>
               <input
@@ -79,7 +92,7 @@
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
-      
+
             <div>
               <mat-form-field appearance="outline" class="inputTel">
                 <mat-label>Telefone Celular</mat-label>
@@ -92,7 +105,7 @@
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-hint>* Obrigatório</mat-hint>
               </mat-form-field>
-      
+
               <mat-form-field appearance="outline" class="inputTel">
                 <mat-label>Telefone Fixo</mat-label>
                 <input
@@ -104,7 +117,7 @@
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-hint>* Obrigatório</mat-hint>
               </mat-form-field>
-      
+
               <mat-form-field appearance="outline" class="input">
                 <mat-label>CPF / CNPJ</mat-label>
                 <input
@@ -139,15 +152,13 @@
               mat-raised-button
               color="warn"
               [mat-dialog-close]="currentClient"
-              (click)="
-              stepper.reset();
-              "
+              (click)="stepper.reset()"
             >
               Concluir<mat-icon>check</mat-icon>
             </button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
-        </mat-card-content>
+    </mat-card-content>
   </mat-card>
 </div>

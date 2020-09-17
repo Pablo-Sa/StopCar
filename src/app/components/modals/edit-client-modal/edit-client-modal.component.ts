@@ -2,7 +2,6 @@ import { ClientInterface } from './../../../model/ClientInterface';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, DoCheck, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -19,19 +18,10 @@ export class EditClientModalComponent implements OnInit, DoCheck {
   secondFormGroup: FormGroup;
   currentClient: ClientInterface;
 
-
   constructor(private _formBuilder: FormBuilder,
-              private _snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) private data: ClientInterface) {
                 console.log(this.data);
                }
-
-  openSnackBar(message: string,) {
-    this._snackBar.open(message, 'Ok',{
-      duration: 2000,
-      verticalPosition:'top'
-    });
-  }              
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({

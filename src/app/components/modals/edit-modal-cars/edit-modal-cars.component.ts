@@ -1,4 +1,3 @@
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -15,17 +14,9 @@ export class EditModalCarsComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) private data: CarsInterface
   ) {
     console.log(this.data);
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, "Ok", {
-      duration: 2000,
-      verticalPosition: "top",
-    });
   }
 
   ngOnInit() {

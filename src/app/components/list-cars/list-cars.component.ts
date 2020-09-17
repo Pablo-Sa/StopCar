@@ -63,8 +63,6 @@ export class ListCarsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: CarsInterface) => {
       if (result) {
-        console.log(result);
-
         const vehicleRef = this.carsService.update(result);
 
         vehicleRef.get().subscribe((doc) => {
