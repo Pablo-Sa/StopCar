@@ -6,8 +6,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
-import { ExclusionModalComponent } from '../modals/exclusion-modal/exclusion-modal.component';
-import { EditModalCarsComponent } from '../modals/edit-modal-cars/edit-modal-cars.component';
+import { ExclusionModalComponent } from "../modals/exclusion-modal/exclusion-modal.component";
+import { EditModalCarsComponent } from "../modals/edit-modal-cars/edit-modal-cars.component";
 
 @Component({
   selector: "app-list-cars",
@@ -56,11 +56,29 @@ export class ListCarsComponent implements OnInit {
     });
   }
 
-  updateRow(object: CarsInterface){
-    this.dialog.open(EditModalCarsComponent,{
-      data:object
+  updateRow(object: CarsInterface) {
+    const dialogRef = this.dialog.open(EditModalCarsComponent, {
+      data: object,
     });
 
+    dialogRef.afterClosed().subscribe((result: CarsInterface) => {
+      if (result) {
+        console.log(result);
+
+        const vehicleRef = this.carsService.update(result);
+
+        vehicleRef.get().subscribe((doc) => {
+          if (doc) {
+            vehicleRef.update(result);
+            this.openSnackBar("Registro Atualizado com Sucesso.");
+          } else {
+            this.openSnackBar("Registro Não Pode Ser Atualizado");
+          }
+        });
+
+        console.log("Alteração Concluída com Sucesso.");
+      }
+    });
   }
 
   loadClients() {
