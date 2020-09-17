@@ -3,8 +3,7 @@ import { Injectable } from "@angular/core";
 import { map } from 'rxjs/operators';
 import {
   AngularFirestore,
-  AngularFirestoreCollection,
-  CollectionReference,
+  AngularFirestoreCollection
 } from "@angular/fire/firestore";
 import { Observable } from 'rxjs';
 
@@ -12,14 +11,14 @@ import { Observable } from 'rxjs';
   providedIn: "root",
 })
 export class ClientService {
-  private clienteCollection: AngularFirestoreCollection<any> = this.db.collection("cliente");
+  private clientCollection: AngularFirestoreCollection<any> = this.db.collection("cliente");
 
   constructor(private db: AngularFirestore) {
     
   }
 
   insert(client: ClientInterface) {
-    return this.clienteCollection.add({...client})
+    return this.clientCollection.add({...client})
     .then(sucess=> console.log('Usuário Salvo Com Sucesso.'));
   }
 
@@ -40,7 +39,11 @@ export class ClientService {
   }
 
   delete(key: string) {
-    return this.clienteCollection.doc(key).delete();
+    return this.clientCollection.doc(key).delete();
+  }
+
+  update(object: ClientInterface) {
+    return this.clientCollection.doc(object.id);
   }
 
 }

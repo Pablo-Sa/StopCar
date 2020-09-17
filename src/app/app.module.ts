@@ -38,7 +38,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ListClientsComponent } from "./components/list-clients/list-clients.component";
 import { ListCarsComponent } from "./components/list-cars/list-cars.component";
 import { ExclusionModalComponent } from "./components/modals/exclusion-modal/exclusion-modal.component";
-import { EditModalCarsComponent } from './components/modals/edit-modal-cars/edit-modal-cars.component';
+import { EditModalCarsComponent } from "./components/modals/edit-modal-cars/edit-modal-cars.component";
+import { EditClientModalComponent } from "./components/modals/edit-client-modal/edit-client-modal.component";
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { EditModalCarsComponent } from './components/modals/edit-modal-cars/edit
     ListCarsComponent,
     ExclusionModalComponent,
     EditModalCarsComponent,
+    EditClientModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,11 @@ import { EditModalCarsComponent } from './components/modals/edit-modal-cars/edit
     FlexOrderStyleBuilder,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [HeaderDialogComponent, ExclusionModalComponent,EditModalCarsComponent],
+  entryComponents: [
+    HeaderDialogComponent,
+    ExclusionModalComponent,
+    EditModalCarsComponent,
+    EditClientModalComponent,
+  ],
 })
 export class AppModule {}

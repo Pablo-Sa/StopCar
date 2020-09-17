@@ -1,4 +1,3 @@
-import { CarsService } from "./../../../shared/cars.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
@@ -17,10 +16,8 @@ export class EditModalCarsComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    private carsService: CarsService,
     @Inject(MAT_DIALOG_DATA) private data: CarsInterface
   ) {
-    console.log("Log do Inject do Modal");
     console.log(this.data);
   }
 

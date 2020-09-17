@@ -69,7 +69,7 @@
         <ng-container matColumnDef="editar">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="warn" style="width: min-content;">
+                <button (click)="updateRow(element)"  mat-raised-button color="warn" style="width: min-content;">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>

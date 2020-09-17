@@ -1,3 +1,4 @@
+import { EditClientModalComponent } from './../modals/edit-client-modal/edit-client-modal.component';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { ClientInterface } from "./../../model/ClientInterface";
 import { ClientService } from "./../../shared/client-service";
@@ -46,6 +47,32 @@ export class ListClientsComponent implements OnInit {
     this._snackBar.open(message, "Ok", {
       duration: 2000,
       verticalPosition: "top",
+    });
+  }
+
+  updateRow(object: ClientInterface) {
+    const dialogRef = this.dialog.open(EditClientModalComponent, {
+      data: object,
+      maxHeight: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe((result: ClientInterface) => {
+      if (result) {
+        console.log(result);
+
+        const vehicleRef = this.clientService.update(result);
+
+        vehicleRef.get().subscribe((doc) => {
+          if (doc) {
+            vehicleRef.update(result);
+            this.openSnackBar("Registro Atualizado com Sucesso.");
+          } else {
+            this.openSnackBar("Registro Não Pode Ser Atualizado");
+          }
+        });
+
+        console.log("Alteração Concluída com Sucesso.");
+      }
     });
   }
 
