@@ -16,7 +16,7 @@
                 matInput
                 placeholder="Informe o Nome"
                 required
-                disabled
+                readonly
               />
               <mat-hint>* Obrigatório</mat-hint>
             </mat-form-field>
@@ -27,14 +27,17 @@
               <mat-form-field appearance="outline" class="input">
                 <mat-label>Placa do Veículo</mat-label>
                 <input
+                  #plateVehicle
                   matInput
                   placeholder="Informe o Nome"
                   required
-                  disabled
+                  readonly
                 />
                 <mat-hint>* Obrigatório</mat-hint>
               </mat-form-field>  
-              <img src="../../../assets/search.png" class="imageCuston">
+              <span (click)="selectVehicle()" >
+                <img src="../../../assets/search.png" class="imageCuston">
+              </span>
             <div>
               <p>Informe os dados e clique em próximo</p>
               <button mat-raised-button matStepperNext color="warn">

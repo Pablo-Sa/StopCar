@@ -1,3 +1,5 @@
+import { CarsInterface } from './../../model/CarsInterface';
+import { SelectVehicleModalComponent } from './../modals/select-vehicle-modal/select-vehicle-modal.component';
 import { ClientInterface } from './../../model/ClientInterface';
 import { SelectClientModalComponent } from './../modals/select-client/select-client-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,6 +23,7 @@ export class OrderServiceComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   @ViewChild('nameCliente',{static:false}) nameCliente: ElementRef;
+  @ViewChild('plateVehicle',{static:false}) plateVehicle: ElementRef;
 
   constructor(private _formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -32,10 +35,25 @@ export class OrderServiceComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe((client:ClientInterface) =>{
-        this.nameCliente.nativeElement.value = client ? client.nome: null;
-        this.openSnackBar(`Cliente ${client.nome} Informado com Sucesso.`);
+        if(client.nome){
+          this.nameCliente.nativeElement.value = client.nome;
+          this.openSnackBar(`Cliente ${client.nome} Informado com Sucesso.`);
+        }
       })
+    }
 
+    selectVehicle(){
+      const dialogRef = this.dialog.open(SelectVehicleModalComponent, {
+        width: '90%',
+        height:'92%'
+      });
+
+      dialogRef.afterClosed().subscribe((vehicle:CarsInterface) =>{
+        if(vehicle.placa){
+          this.plateVehicle.nativeElement.value = vehicle.placa;
+          this.openSnackBar(`Veículo com Placa:  ${vehicle.placa} Informado com Sucesso.`);
+        }
+      })
     }
 
     openSnackBar(message: string) {
