@@ -20,7 +20,7 @@ export class ListCarsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   ELEMENT_DATA: CarsInterface[] = [];
-  displayedColumns: string[] = ["modelo", "ano", "cor", "placa", "acao"];
+  displayedColumns: string[] = ["modelo", "ano", "cor", "placa", "editar","excluir"];
   dataSource = new MatTableDataSource();
   completeLoading: boolean;
   errorLoading: boolean;

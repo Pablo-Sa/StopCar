@@ -58,27 +58,24 @@
         </ng-container>
 
         <!-- Ação -->
-        <ng-container matColumnDef="acao">
+        <ng-container matColumnDef="editar">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element" style="padding-left: 30%">
-            <button
-              (click)="updateRow(element)"
-              mat-raised-button
-              color="warn"
-              style="width: min-content"
-            >
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button
-              (click)="deleteRow(element.id)"
-              mat-raised-button
-              color="warn"
-              style="width: min-content"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
+          <td mat-cell *matCellDef="let element">
+              <button (click)="updateRow(element)"  mat-raised-button color="warn" style="width: min-content;">
+                  <mat-icon>edit</mat-icon>
+              </button>
           </td>
-        </ng-container>
+      </ng-container>
+
+      <!-- Excluir -->
+      <ng-container matColumnDef="excluir">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+              <button (click)="deleteRow(element.id)"  mat-raised-button color="warn" style="width: min-content;">
+                  <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+      </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

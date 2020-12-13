@@ -1,0 +1,26 @@
+.example-card {
+    margin-top: 40px;
+    max-width: auto;
+    max-height: auto;
+    border-style: solid;
+    border-color: brown;
+    padding-bottom: 25px;
+    padding-left: 40px;
+  }
+
+  .input {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+.imageCuston{
+  cursor: pointer; 
+  max-width: 34px;
+  max-height: 34px;
+  margin-left: 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
