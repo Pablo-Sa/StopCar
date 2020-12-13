@@ -40,6 +40,7 @@ import { ListCarsComponent } from "./components/list-cars/list-cars.component";
 import { ExclusionModalComponent } from "./components/modals/exclusion-modal/exclusion-modal.component";
 import { EditModalCarsComponent } from "./components/modals/edit-modal-cars/edit-modal-cars.component";
 import { EditClientModalComponent } from "./components/modals/edit-client-modal/edit-client-modal.component";
+import { SelectClientModalComponent } from './components/modals/select-client/select-client-modal.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EditClientModalComponent } from "./components/modals/edit-client-modal/
     ExclusionModalComponent,
     EditModalCarsComponent,
     EditClientModalComponent,
+    SelectClientModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,7 @@ import { EditClientModalComponent } from "./components/modals/edit-client-modal/
     ExclusionModalComponent,
     EditModalCarsComponent,
     EditClientModalComponent,
+    SelectClientModalComponent
   ],
 })
 export class AppModule {}

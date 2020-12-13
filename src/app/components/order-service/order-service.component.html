@@ -1,95 +1,162 @@
-<div style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px;padding-top:10px">
-    <mat-card class="example-card mat-elevation-z15">
-      <mat-card-header>
-        <div mat-card-avatar><mat-icon>directions_car</mat-icon></div>
-        <mat-card-title>Ordem de Serviço</mat-card-title>
-      </mat-card-header>
+<div style="padding-left: 20px; padding-right: 20px;">
+  <mat-card class="example-card mat-elevation-z20">
+    <mat-card-header>
+      <div mat-card-avatar><mat-icon>directions_car</mat-icon></div>
+      <mat-card-title>Ordem de Serviço</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-horizontal-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup" errorMessage="Dados Incompletos.">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Dados do Cliente e Veículo</ng-template>
+            <mat-form-field appearance="outline" class="input" style="margin-top: 20px;">
+              <mat-label>Nome do Cliente</mat-label>
+              <input
+                #nameCliente
+                matInput
+                placeholder="Informe o Nome"
+                required
+                disabled
+              />
+              <mat-hint>* Obrigatório</mat-hint>
+            </mat-form-field>
+            <span (click)="selectCliente()">
+              <img src="../../../assets/search.png" class="imageCuston">
+            </span>
+              <br>
+              <mat-form-field appearance="outline" class="input">
+                <mat-label>Placa do Veículo</mat-label>
+                <input
+                  matInput
+                  placeholder="Informe o Nome"
+                  required
+                  disabled
+                />
+                <mat-hint>* Obrigatório</mat-hint>
+              </mat-form-field>  
+              <img src="../../../assets/search.png" class="imageCuston">
+            <div>
+              <p>Informe os dados e clique em próximo</p>
+              <button mat-raised-button matStepperNext color="warn">
+                Próximo<mat-icon>navigate_next</mat-icon>
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" errorMessage="Endereço Obrigatório">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Produtos e Serviços</ng-template>
+      
+            <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
+              <mat-card class="example-card mat-elevation-z15" style="width: 45%;">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Serviço</mat-radio-button>
+                  <mat-radio-button value="2">Produto</mat-radio-button>
+                </mat-radio-group>
+                <br>
+                <mat-form-field appearance="outline" class="input" style="margin-top: 10px;">
+                  <mat-label>Descrição</mat-label>
+                  <input
+                    matInput
+                    placeholder="Informe a Descrição"
+                    required
+                  />
+                  <mat-hint>* Obrigatório</mat-hint>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline" class="input" style="margin-top: 10px;">
+                  <mat-label>Valor</mat-label>
+                  <input
+                    matInput
+                    placeholder="Informe o Valor"
+                    required
+                  />
+                  <mat-hint>* Obrigatório</mat-hint>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="warn">
+                  <mat-icon>navigate_before</mat-icon>Cancelar
+                </button>
+                <button
+                  mat-raised-button
+                  color="warn"
+                >
+                  Adicionar<mat-icon>add_circle</mat-icon>
+                </button>
+              </mat-card>
+              <mat-card class="example-card mat-elevation-z15" style="width: 45%">
+                <mat-accordion>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false"
+                                       style="border-style: solid;border-color: brown;">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Serviços e Produtos Informados
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        Clique para {{panelOpenState ? 'Fechar' : 'Abrir'}}
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    
+                    Aqui Exibirá as Informçaões.
+                    
+      
+                  </mat-expansion-panel>
+                </mat-accordion>
+                <mat-card class="example-card mat-elevation-z15" style="text-align: left;">
+                  Valor total de Serviços: 
+                  <br>
+                  <br>
+                  Valor total de Produtos:
+                  <br>
+                  <br>
+                  Valor Geral:
+                </mat-card>
+      
+      
+              </mat-card>
+            </div>
+      
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Finalizar</ng-template>
+          <p>Tem Certeza que deseja finalizar ?</p>
+          <div>
+            <mat-slide-toggle [(ngModel)]="isCheckedGarantia">Garantia ?</mat-slide-toggle>
+            <br>
+            <mat-form-field appearance="outline" style="min-width: 150px;max-width: 250px;width: 100% ;margin-top: 20px;" *ngIf="isCheckedGarantia" >
+              <mat-label>Informe quantos Dias de Garântia</mat-label>
+              <input
+                matInput
+                placeholder="Informe os Dias"
+                required
+              />
+              <mat-hint>* Obrigatório</mat-hint>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-slide-toggle [(ngModel)]="isCheckedEmitirRecibo">Emitir Recibo ?</mat-slide-toggle>
+            <br>
+            <br>
 
-      <div fxLayout="row" fxLayoutAlign="space-evenly stretch">
-        <mat-card class="example-card mat-elevation-z15" style="width: 45%;">
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Serviço</mat-radio-button>
-            <mat-radio-button value="2">Produto</mat-radio-button>
-          </mat-radio-group>
-          <br>
-          <mat-form-field appearance="outline" class="input" style="margin-top: 10px;">
-            <mat-label>Descrição</mat-label>
-            <input
-              matInput
-              placeholder="Informe a Descrição"
-              required
-            />
-            <mat-hint>* Obrigatório</mat-hint>
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline" class="input" style="margin-top: 10px;">
-            <mat-label>Valor</mat-label>
-            <input
-              matInput
-              placeholder="Informe o Valor"
-              required
-            />
-            <mat-hint>* Obrigatório</mat-hint>
-          </mat-form-field>
-          <br>
-          <button mat-raised-button color="warn">
-            <mat-icon>navigate_before</mat-icon>Cancelar
-          </button>
-          <button
-            mat-raised-button
-            color="warn"
-          >
-            Adicionar<mat-icon>add_circle</mat-icon>
-          </button>
-        </mat-card>
-        <mat-card class="example-card mat-elevation-z15" style="width: 45%">
-
-          
-          
-
-        </mat-card>
-      </div>
-
-
-
-
-
-
-
-
-
-
-      <mat-card-content>
-        <mat-form-field appearance="outline" class="input" style="margin-top: 20px;">
-          <mat-label>Nome do Cliente</mat-label>
-          <input
-            matInput
-            placeholder="Informe o Nome"
-            required
-            disabled
-          />
-          <mat-hint>* Obrigatório</mat-hint>
-        </mat-form-field>
-          <img src="../../../assets/search.png" class="imageCuston">
-          <br>
-          <mat-form-field appearance="outline" class="input">
-            <mat-label>Placa do Veículo</mat-label>
-            <input
-              matInput
-              placeholder="Informe o Nome"
-              required
-              disabled
-            />
-            <mat-hint>* Obrigatório</mat-hint>
-          </mat-form-field>  
-          <img src="../../../assets/search.png" class="imageCuston">
-          
-          
-        
-
-        
-    
-    </mat-card-content>
-    </mat-card>
-  </div>
+            <button mat-raised-button matStepperPrevious color="warn">
+              <mat-icon>navigate_before</mat-icon>Voltar
+            </button>
+            <button
+              [disabled]="firstFormGroup.invalid || secondFormGroup.invalid"
+              mat-raised-button
+              color="warn"
+              (click)="
+              stepper.reset();
+              "
+            >
+              Concluir<mat-icon>check</mat-icon>
+            </button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+        </mat-card-content>
+  </mat-card>
+</div>
   
