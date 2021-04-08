@@ -12,3 +12,14 @@ aws dynamodb put-item --table-name Costumer --item file://item.json --return-con
 aws dynamodb scan --table-name Costumer --endpoint-url=http://localhost:4566
 
 aws dynamodb get-item --table-name Costumer --key file://key.json --return-consumed-capacity TOTAL --endpoint-url=http://localhost:4566
+
+********** Tabelas Testes ***************
+
+aws --endpoint-url=http://localhost:4566 dynamodb create-table   \
+  --table-name Enquadramento \
+  --attribute-definitions \
+       AttributeName=Id,AttributeType=S \
+  --key-schema AttributeName=Id,KeyType=HASH \
+  --provisioned-throughput \
+    ReadCapacityUnits=10,WriteCapacityUnits=5
+
