@@ -26,6 +26,7 @@ aws --endpoint-url=http://localhost:4566 dynamodb create-table   \
     
 -- PutItems
 
+** PutItem Simples
 aws --endpoint-url=http://localhost:4566 dynamodb put-item   \
   --table-name Costumer \
   --item \
@@ -35,17 +36,17 @@ aws --endpoint-url=http://localhost:4566 dynamodb put-item   \
  "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} } ,
  "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} }
  }}'	
- 
- aws --endpoint-url=http://localhost:4566 dynamodb put-item   \
-  --table-name Costumer \
+
+
+** PutItem Com Lista de Objetos
+aws --endpoint-url=http://localhost:4566 dynamodb put-item   \
+  --table-name Enquadramento \
   --item \
  '{
  "Id":{"S":"1"},
  "Caracteristimas":{
  "L":[{
- "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} },
- "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} }
+ "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} }},
+ {"M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} }
  }]
  }}'	
-
-
