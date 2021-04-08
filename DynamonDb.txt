@@ -15,6 +15,7 @@ aws dynamodb get-item --table-name Costumer --key file://key.json --return-consu
 
 ********** Tabelas Testes ***************
 
+-- Criação da Tabela
 aws --endpoint-url=http://localhost:4566 dynamodb create-table   \
   --table-name Enquadramento \
   --attribute-definitions \
@@ -22,4 +23,18 @@ aws --endpoint-url=http://localhost:4566 dynamodb create-table   \
   --key-schema AttributeName=Id,KeyType=HASH \
   --provisioned-throughput \
     ReadCapacityUnits=10,WriteCapacityUnits=5
+    
+-- PutItems
+
+aws --endpoint-url=http://localhost:4566 dynamodb put-item   \
+  --table-name Enquadramento \
+  --item \
+ '{
+ "Id":{"S":"1"},
+ "Caracteristimas":{
+ "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} } ,
+ "M" : {"id_Caracteristica":{"N":"1"}, "valor_caracteristica": {"S":"Crediario"} }
+ }}'	
+ 
+ 
 
